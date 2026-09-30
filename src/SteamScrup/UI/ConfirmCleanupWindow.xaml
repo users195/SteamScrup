@@ -1,0 +1,100 @@
+<Window x:Class="SteamScrup.UI.ConfirmCleanupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="648" SizeToContent="Height" MaxHeight="660"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Background="{DynamicResource BgWindow}"
+        Foreground="{DynamicResource FgPrimary}"
+        FontFamily="Microsoft YaHei UI, Segoe UI"
+        TextOptions.TextFormattingMode="Display">
+
+    <!--
+        Every string in this dialog is assigned from code-behind on purpose. The window has
+        no DataContext of its own, and a previous version bound the title and the button
+        contents with {Binding [key]}, which silently produced empty buttons. Keeping text
+        assignment in one place (the constructor) removes that whole failure mode.
+    -->
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="TitleText" Grid.Row="0" Style="{StaticResource H1}" />
+        <TextBlock x:Name="SummaryText" Grid.Row="1" Style="{StaticResource Caption}"
+                   Margin="0,10,0,0" TextWrapping="Wrap" />
+
+        <!-- save-data warning: shown whenever the selection contains userdata entries -->
+        <Border x:Name="UserDataPanel" Grid.Row="2" Margin="0,14,0,0" CornerRadius="6" Padding="12"
+                Background="{DynamicResource DangerBg}"
+                BorderBrush="{DynamicResource DangerBorder}" BorderThickness="1"
+                Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock x:Name="UserDataTitle" Style="{StaticResource H2}"
+                           Foreground="{DynamicResource DangerFg}" TextWrapping="Wrap" />
+                <TextBlock x:Name="UserDataBody" Style="{StaticResource Caption}" Margin="0,6,0,0"
+                           Foreground="{DynamicResource DangerFg}" TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+
+        <!-- high-risk review list -->
+        <Border x:Name="RiskPanel" Grid.Row="3" Margin="0,14,0,0" CornerRadius="6" Padding="12"
+                Background="{DynamicResource WarnBg}"
+                BorderBrush="{DynamicResource WarnFg}" BorderThickness="1"
+                Visibility="Collapsed">
+            <ScrollViewer MaxHeight="180" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock x:Name="RiskTitle" Style="{StaticResource H2}"
+                               Foreground="{DynamicResource WarnFg}" TextWrapping="Wrap" />
+                    <ItemsControl x:Name="RiskList" Margin="0,8,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" Style="{StaticResource PathText}"
+                                           Foreground="{DynamicResource WarnFg}"
+                                           Margin="0,2" TextWrapping="Wrap" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!-- acknowledgement: required for irreversible deletion and for save data -->
+        <StackPanel Grid.Row="4" Margin="0,16,0,0">
+            <CheckBox x:Name="RiskAck" Style="{StaticResource CleanCheck}"
+                      HorizontalAlignment="Left" Visibility="Collapsed"
+                      Checked="OnAckChanged" Unchecked="OnAckChanged" />
+            <TextBlock x:Name="RiskAckLabel" Style="{StaticResource Caption}"
+                       TextWrapping="Wrap" Visibility="Collapsed"
+                       Foreground="{DynamicResource DangerFg}" />
+        </StackPanel>
+
+        <!-- three explicit outcomes -->
+        <Grid Grid.Row="5" Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="HintText" Grid.Column="0" Style="{StaticResource Muted}"
+                       VerticalAlignment="Center" TextWrapping="Wrap" Margin="0,0,12,0" />
+
+            <Button x:Name="CancelButton" Grid.Column="1" MinWidth="88"
+                    Style="{StaticResource BaseButton}" Click="OnCancel" />
+
+            <Button x:Name="PermanentButton" Grid.Column="2" MinWidth="132" Margin="8,0,0,0"
+                    Style="{StaticResource DangerButton}" Click="OnPermanent" />
+
+            <Button x:Name="RecycleButton" Grid.Column="3" MinWidth="132" Margin="8,0,0,0"
+                    Style="{StaticResource PrimaryButton}" Click="OnRecycle" />
+        </Grid>
+    </Grid>
+</Window>

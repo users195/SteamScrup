@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>SteamScrup</AssemblyName>
+    <RootNamespace>SteamScrup</RootNamespace>
+    <Version>1.6.3</Version>
+    <Product>SteamScrup</Product>
+    <AssemblyTitle>SteamScrup</AssemblyTitle>
+    <Company>SteamScrup</Company>
+    <Description>Steam leftover cleaner for Windows</Description>
+    <!-- Tray-free, single window desktop app. No network, no telemetry. -->
+    <RollForward>LatestMinor</RollForward>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
+    <StartupObject>SteamScrup.Program</StartupObject>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- The window header shows the generated preview; the .ico is embedded as the exe icon. -->
+    <Resource Include="Assets\app-preview.png" />
+  </ItemGroup>
+
+</Project>
+
+
+
+
+
+

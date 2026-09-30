@@ -1,0 +1,62 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <!-- Light theme. Every key in this file must also exist in Dark.xaml with the same
+         name: the two dictionaries are swapped at runtime while the app is running. -->
+
+    <!-- Surfaces -->
+    <Color x:Key="BgWindowColor">#FFF4F6F8</Color>
+    <Color x:Key="BgPanelColor">#FFFFFFFF</Color>
+    <Color x:Key="BgCardColor">#FFFFFFFF</Color>
+    <Color x:Key="BgHoverColor">#FFEDF1F5</Color>
+    <Color x:Key="BgSelectedColor">#FFE1EEF9</Color>
+
+    <SolidColorBrush x:Key="BgWindow" Color="{StaticResource BgWindowColor}" />
+    <SolidColorBrush x:Key="BgPanel" Color="{StaticResource BgPanelColor}" />
+    <SolidColorBrush x:Key="BgCard" Color="{StaticResource BgCardColor}" />
+    <SolidColorBrush x:Key="BgHover" Color="{StaticResource BgHoverColor}" />
+    <SolidColorBrush x:Key="BgSelected" Color="{StaticResource BgSelectedColor}" />
+    <SolidColorBrush x:Key="BgInput" Color="#FFFFFFFF" />
+
+    <!-- Text -->
+    <SolidColorBrush x:Key="FgPrimary" Color="#FF1B2530" />
+    <SolidColorBrush x:Key="FgSecondary" Color="#FF5A6875" />
+    <SolidColorBrush x:Key="FgMuted" Color="#FF8A97A4" />
+    <SolidColorBrush x:Key="FgOnAccent" Color="#FFFFFFFF" />
+
+    <!-- Lines -->
+    <SolidColorBrush x:Key="BorderSubtle" Color="#FFDDE3EA" />
+    <SolidColorBrush x:Key="BorderStrong" Color="#FFC3CCD6" />
+
+    <!-- Accent: the deeper blue is required in light mode so white button text and
+         icons keep an accessible contrast ratio against the accent fill. -->
+    <SolidColorBrush x:Key="Accent" Color="#FF2A7FB8" />
+    <SolidColorBrush x:Key="AccentHover" Color="#FF3A92CE" />
+    <SolidColorBrush x:Key="AccentPressed" Color="#FF1F6A9C" />
+    <SolidColorBrush x:Key="AccentSoft" Color="#FFE7F1FA" />
+    <SolidColorBrush x:Key="AccentMuted" Color="#FFC9E0F2" />
+
+    <!-- Status -->
+    <SolidColorBrush x:Key="DangerBg" Color="#FFFDEBEC" />
+    <SolidColorBrush x:Key="DangerFg" Color="#FFC0392B" />
+    <SolidColorBrush x:Key="DangerBorder" Color="#FFF2C0BE" />
+    <SolidColorBrush x:Key="WarnBg" Color="#FFFFF6E0" />
+    <SolidColorBrush x:Key="WarnFg" Color="#FF9A6B00" />
+    <SolidColorBrush x:Key="OkBg" Color="#FFE6F6EC" />
+    <SolidColorBrush x:Key="OkFg" Color="#FF1E7A44" />
+    <SolidColorBrush x:Key="InfoBg" Color="#FFE7F1FA" />
+    <SolidColorBrush x:Key="InfoFg" Color="#FF1B6699" />
+
+    <!-- Card elevation -->
+    <sys:Double x:Key="CardShadowOpacity">0.10</sys:Double>
+    <sys:Double x:Key="CardShadowBlur">12</sys:Double>
+    <sys:Double x:Key="CardShadowDepth">2</sys:Double>
+    <Color x:Key="CardShadowColor">#FF1B2530</Color>
+
+    <!-- A soft, low-contrast wash behind cards. Kept as a brush rather than a
+         DropShadowEffect because DynamicResource cannot retarget a Freezable inside an
+         Effect, which would leave the shadow stuck on the previous theme's colour. -->
+    <SolidColorBrush x:Key="CardShadowBrush" Color="#14000000" />
+
+</ResourceDictionary>

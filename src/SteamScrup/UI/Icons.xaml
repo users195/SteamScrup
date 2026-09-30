@@ -1,0 +1,65 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <!--
+        Icon glyphs from the fonts that ship with Windows, so the portable build stays
+        dependency-free. Every codepoint below was rendered and visually verified in both
+        fonts (see tools/probe_icons.py, which produces a contact sheet).
+
+        Font fallback chain:
+          Segoe Fluent Icons  (Windows 11, SegoeIcons.ttf - thinner, closer to Lucide)
+          Segoe MDL2 Assets   (Windows 10, segmdl2.ttf)
+          Segoe UI Symbol     (last resort, some glyphs may render differently)
+    -->
+
+    <FontFamily x:Key="IconFont">Segoe Fluent Icons, Segoe MDL2 Assets, Segoe UI Symbol</FontFamily>
+
+    <!-- Navigation / categories -->
+    <sys:String x:Key="GlyphOverview">&#xE9D2;</sys:String>
+    <sys:String x:Key="GlyphCommon">&#xE8B7;</sys:String>
+    <sys:String x:Key="GlyphDirectX">&#xE950;</sys:String>
+    <sys:String x:Key="GlyphShader">&#xEDA2;</sys:String>
+    <sys:String x:Key="GlyphWorkshop">&#xEA86;</sys:String>
+    <sys:String x:Key="GlyphSteamCache">&#xE823;</sys:String>
+    <sys:String x:Key="GlyphCrash">&#xEBE8;</sys:String>
+    <sys:String x:Key="GlyphUserData">&#xE74E;</sys:String>
+    <sys:String x:Key="GlyphSettings">&#xE713;</sys:String>
+
+    <!-- Actions -->
+    <sys:String x:Key="GlyphScan">&#xE72C;</sys:String>
+    <sys:String x:Key="GlyphClean">&#xE894;</sys:String>
+    <sys:String x:Key="GlyphStop">&#xE711;</sys:String>
+    <sys:String x:Key="GlyphSelectAll">&#xE8B3;</sys:String>
+    <sys:String x:Key="GlyphSelectNone">&#xE8E6;</sys:String>
+    <sys:String x:Key="GlyphClearSelection">&#xE75C;</sys:String>
+    <sys:String x:Key="GlyphSafeOnly">&#xEA18;</sys:String>
+    <sys:String x:Key="GlyphSearch">&#xE721;</sys:String>
+    <sys:String x:Key="GlyphOpen">&#xE8B7;</sys:String>
+    <sys:String x:Key="GlyphRefresh">&#xE72C;</sys:String>
+    <sys:String x:Key="GlyphInfo">&#xE946;</sys:String>
+    <sys:String x:Key="GlyphWarning">&#xE7BA;</sys:String>
+    <sys:String x:Key="GlyphCheck">&#xE8FB;</sys:String>
+    <sys:String x:Key="GlyphError">&#xE711;</sys:String>
+    <sys:String x:Key="GlyphShield">&#xEA18;</sys:String>
+
+    <!-- Base icon text style: icon fonts must not be given a fallback UI font first or
+         the glyph resolves to a box. -->
+    <Style x:Key="Icon" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{StaticResource IconFont}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+    </Style>
+
+    <Style x:Key="IconSmall" TargetType="TextBlock" BasedOn="{StaticResource Icon}">
+        <Setter Property="FontSize" Value="13" />
+    </Style>
+
+    <Style x:Key="IconLarge" TargetType="TextBlock" BasedOn="{StaticResource Icon}">
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+</ResourceDictionary>

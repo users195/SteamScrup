@@ -1,0 +1,80 @@
+﻿SteamScrup 1.6.3 — 便携版 / portable edition
+================================================
+
+【怎么用 / How to run】
+  双击 SteamScrup.exe 即可。
+  不安装任何东西：不写注册表、不建快捷方式、不需要管理员权限、没有后台服务。
+
+  Just run SteamScrup.exe. Nothing is installed: no registry entries, no
+  shortcuts, no administrator rights, no background services.
+
+【数据存哪里 / Where your data goes】
+  设置、日志和游戏名缓存存放在本文件夹内（settings.json、logs\、names.json）。
+  整个文件夹可以随意复制到别的机器，配置会跟着走。
+
+  如果本文件夹不可写（例如被放进 Program Files），程序会自动改用
+  %LOCALAPPDATA%\SteamScrup，而不会报错。
+
+  Settings, logs and the game-name cache live in this folder, so the whole
+  directory can be moved between machines with its configuration intact. If the
+  folder is not writable, the app silently falls back to %LOCALAPPDATA%\SteamScrup.
+
+【关于联网 / About the network】
+  唯一会联网的地方是「游戏名解析」：扫描完成后，程序会向 Steam 官方公开接口
+  (store.steampowered.com/api/appdetails) 查询候选项目对应的游戏名称，
+  结果缓存在 names.json，之后启动不再重复查询。
+
+  - 只发送 appid，不发送任何账号信息、路径或使用数据
+  - 查不到（例如已下架游戏）就显示为「AppID 123456」，不影响任何功能
+  - 没有网络时功能完全正常，只是名称显示为 AppID
+  - 可用日志确认：联网失败会记录「name resolution failed ...」
+
+  The only network access is game-name lookup against Steam's public endpoint.
+  Only appids are sent; no account data, paths or usage data. Results are cached
+  in names.json. Without a network everything still works, names just read "AppID n".
+
+【清理前请先完全退出 Steam / Close Steam completely first】
+  Steam 运行时清理功能会被禁用，必须完全退出 Steam 才能执行清理。
+
+【安全保证（不可关闭）/ Safety guarantees (cannot be disabled)】
+  - 永不自动删除，始终是「预览 → 勾选 → 确认」三步
+    Never deletes automatically: preview, select, then confirm.
+  - 永不删除 appmanifest .acf 清单文件
+    Never deletes .acf manifest files.
+  - 默认不触碰 userdata 存档，需在设置里手动开启高级选项
+    Never touches userdata saves unless you enable the advanced option.
+  - 无账号登录、无遥测、无更新检查
+    No account login, no telemetry, no update checks.
+  - 不提权运行，权限不足的项目会跳过并记入日志
+    Runs without elevation; denied items are skipped and logged.
+
+【删除方式 / Deletion modes】
+  确认框提供三个按钮：取消、移至回收站（可还原）、永久删除（不可恢复）。
+  选中项里若含「需确认」的高风险内容，永久删除需要先勾选风险确认。
+
+  回收站不会立即释放磁盘空间，需要清空回收站后才真正腾出空间。
+
+  The confirmation dialog offers Cancel / Move to Recycle Bin / Delete
+  permanently. Permanent deletion requires the risk acknowledgement when any
+  high-risk item is selected. The Recycle Bin does not free space until emptied.
+
+【自己验证这个构建 / Verify this build yourself】
+  无头自检（解析器、库发现、扫描安全性、防误删护栏、图标与文案完整性）：
+      SteamScrup.exe --selftest report.txt
+  退出码 0 表示全部通过。
+
+  界面冒烟测试：真的打开窗口、跑一遍扫描、模拟主题/语言/勾选操作，
+  并截图到指定目录，然后写出报告：
+      SteamScrup.exe --exit-after=20000 --binding-report=report.txt --screenshot=shots
+
+  Verification commands:
+      SteamScrup.exe --selftest report.txt
+      SteamScrup.exe --exit-after=20000 --binding-report=report.txt --screenshot=shots
+
+【卸载 / Removing it】
+  直接删除整个文件夹即可，不会留下任何残留。
+  若曾在设置里把日志目录改到别处，请自行删除该目录。
+
+  Just delete the folder. Nothing else is left behind.
+
+详细说明见上一级目录的 README.md。

@@ -1,0 +1,50 @@
+# ---------------------------------------------------------------------------
+# Build output
+# ---------------------------------------------------------------------------
+bin/
+obj/
+dist/
+*.user
+*.suo
+.vs/
+
+# ---------------------------------------------------------------------------
+# Portable SDK and package caches used for offline builds.
+#
+# tools/dotnet    ~770 MB portable .NET SDK   (see README: build prerequisites)
+# tools/runtimepacks ~89 MB vendored runtime packages
+# tools/nuget     ~310 MB global package cache
+# tools/clihome, tools/appdata  toolchain state
+#
+# None of this is source. It is excluded so the repository stays around 1 MB.
+# ---------------------------------------------------------------------------
+tools/dotnet/
+tools/nuget/
+tools/runtimepacks/
+tools/clihome/
+tools/appdata/
+
+# ---------------------------------------------------------------------------
+# Runtime state written next to the executable by the portable build
+# ---------------------------------------------------------------------------
+logs/
+settings.json
+names.json
+*.log
+
+# ---------------------------------------------------------------------------
+# Local scratch: backups, probe output, generated reports
+# ---------------------------------------------------------------------------
+backup/
+_excluded-backup/
+SteamScrup-repo/
+probe-out.txt
+font-probe.txt
+selftest-report.txt
+smoke-report.txt
+binding-report.txt
+icons-*.png
+ref-*.webp
+ref-*.png
+ref-package.json
+_subfolder_test/
