@@ -20,6 +20,18 @@ Windows 上的 Steam 游戏卸载残留清理工具。
 
 ---
 
+## UI
+
+### 深色模式
+
+![深色模式](https://github.com/users195/SteamScrup/blob/main/screenshots/Dark%20Mode.jpg)
+
+### 浅色模式
+
+![浅色模式](https://github.com/users195/SteamScrup/blob/main/screenshots/Light%20Mode.jpg)
+
+---
+
 ## 清理类别与风险分级
 
 每一行都带风险等级，**只有「安全」项会默认勾选**：
